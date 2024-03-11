@@ -20,7 +20,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 100px 0 200px;
+  padding: 100px 0 150px;
   border-radius: 0 0 40px 40px;
   background: linear-gradient(
     13deg,
@@ -116,4 +116,30 @@ body {
 #weather #info span {
   color: var(--color-secondary);
   margin-left: 5px;
+}
+
+#forecast {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -80px;
+}
+
+#forecast div {
+  width: 150px;
+  padding: 20px 10px 30px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: var(--color-secondary) 0px 25px 80px -25px;
+}
+
+#forecast h3 {
+  color: var(--color-primary);
+  margin-bottom: 30px;
+}
+
+#forecast p {
+  margin-bottom: 10px;
+}
+#forecast span {
+  color: var(--color-secondary);
 }
