@@ -16,6 +16,7 @@ const weatherContainer = document.getElementById("weather");
 const forecastContainer = document.getElementById("forecast");
 const locationIcon = document.getElementById("location");
 const modalButton = document.getElementById("modal-button");
+const loader = document.querySelector("loader");
 
 const renderCurrentWeather = (data) => {
   if (!data) return;
@@ -64,6 +65,8 @@ const searchHandler = async () => {
     showModal("pls add city name");
     return;
   }
+  weatherContainer.prepend(loader);
+
   const currentData = await getWeatherData("current", cityName);
   renderCurrentWeather(currentData);
   const forecastData = await getWeatherData("forecast", cityName);
@@ -88,9 +91,17 @@ const locationHandler = () => {
   }
 };
 
+const initHandler = async () => {
+  const currentData = await getWeatherData("current", "tehran");
+  renderCurrentWeather(currentData);
+  const forecastData = await getWeatherData("forecast", "tehran");
+  renderForecastWeather(forecastData);
+};
+
 searchButton.addEventListener("click", searchHandler);
 locationIcon.addEventListener("click", locationHandler);
 modalButton.addEventListener("click", removeModal);
+document.addEventListener("DOMContentLoaded", initHandler);
 window.onload = () => {
   searchInput.focus();
 };
